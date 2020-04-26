@@ -1,0 +1,43 @@
+    <ProductSection ovf:required="true">
+    <Info>A Practical Debian Appliance</Info>
+      <Product>VMware vSphere Debian Appliance</Product>
+      <Vendor>Timo Sugliani</Vendor>
+      <Version>{{APPLIANCE_VERSION}}</Version>
+      <ProductUrl>https://github.com/tsugliani/packer-vsphere-debian-appliance</ProductUrl>
+      <VendorUrl>https://cloud.tsugliani.fr</VendorUrl>
+      <Category>Networking</Category>
+        <Property ovf:key="guestinfo.hostname" ovf:type="string" ovf:userConfigurable="true" ovf:value="">
+            <Label>Hostname</Label>
+            <Description>Hostname of system</Description>
+        </Property>
+        <Property ovf:key="guestinfo.ipaddress" ovf:type="string" ovf:userConfigurable="true" ovf:value="">
+            <Label>IP Address</Label>
+            <Description>IP Address of the system (Leave blank for DHCP)</Description>
+        </Property>
+        <Property ovf:key="guestinfo.netprefix" ovf:type="string" ovf:userConfigurable="true" ovf:value="">
+            <Label>Network CIDR Prefix</Label>
+            <Description>Network CIDR Prefix (Example: 24)</Description>
+        </Property>
+        <Property ovf:key="guestinfo.gateway" ovf:type="string" ovf:userConfigurable="true" ovf:value="">
+            <Label>Gateway</Label>
+            <Description>Gateway of the system (Leave blank for DHCP)</Description>
+        </Property>
+        <Property ovf:key="guestinfo.dns" ovf:type="string" ovf:userConfigurable="true" ovf:value="">
+            <Label>DNS</Label>
+            <Description>DNS Servers (space separated)</Description>
+        </Property>
+        <Property ovf:key="guestinfo.domain" ovf:type="string" ovf:userConfigurable="true" ovf:value="">
+            <Label>Domain</Label>
+            <Description>Domain</Description>
+        </Property>
+        <Category>OS Credentials</Category>
+        <Property ovf:key="guestinfo.password" ovf:password="true" ovf:type="string" ovf:userConfigurable="true" ovf:value="">
+            <Label>Root Password</Label>
+            <Description>Password to login in as root. Please use a secure password</Description>
+        </Property>
+        <Property ovf:key="guestinfo.sshkey" ovf:type="string" ovf:userConfigurable="true" ovf:value="">
+            <Label>SSH Public Key</Label>
+            <Description>Leverage an SSH Key to login as root with no password</Description>
+        </Property>
+
+    </ProductSection>

@@ -1,0 +1,17 @@
+{
+    "version": "10.3.0",
+    "author": "Timo Sugliani",
+    "website": "https://cloud.tsugliani.fr",
+    "description": "VMware vSphere Debian Template",
+    "vm_name": "debian-toolbox-10.3.0",
+    "guest_os_type": "debian10-64",
+    "hostname": "debian",
+    "numvcpus": "2",
+    "ramsize": "2048",
+    "disk_size": "40000",
+    "iso_checksum": "6a901b5abe43d88b39d627e1339d15507cc38f980036b928f835e0f0e957d3d8",
+    "iso_checksum_type": "sha256",
+    "iso_url": "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-10.3.0-amd64-netinst.iso",
+    "guest_username": "root",
+    "guest_password": "VMware1!"
+}

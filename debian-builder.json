@@ -1,0 +1,8 @@
+{
+  "builder_host": "esx.packer.zpod.io",
+  "builder_host_username": "root",
+  "builder_host_password": "VMware1!",
+  "builder_host_datastore": "NFS-01",
+  "builder_host_folder": "/isos",
+  "builder_host_portgroup": "VM Network"
+}
