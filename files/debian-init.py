@@ -60,7 +60,7 @@ allow-hotplug eth0
 iface eth0 inet static
     address {ipaddress}/{netprefix}
     gateway {gateway}
-    dns-nameserver {dns}
+    dns-nameservers {dns}
 EOF
 ifdown eth0
 ifup eth0
