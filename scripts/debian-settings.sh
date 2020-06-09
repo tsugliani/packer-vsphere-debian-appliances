@@ -7,6 +7,9 @@
 
 echo '> Debian Settings...'
 
+echo '> Installing resolvconf...'
+apt-get install -y resolvconf
+
 echo '> SSH directory'
 mkdir -vp $HOME/.ssh
 
