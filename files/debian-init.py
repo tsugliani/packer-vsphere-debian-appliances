@@ -104,14 +104,10 @@ def appliance_update_credentials(properties):
     """
         Update Appliance root password & SSH KEY
     """
-    chpasswd_cmd = "/usr/sbin/chpasswd"
 
     if properties['guestinfo.password']:
-        sp = subprocess.Popen([chpasswd_cmd], stderr=subprocess.PIPE, stdin=subprocess.PIPE)
-        sp.communicate(input='%s:%s' % ("root", properties['guestinfo.password']))
-        sp.wait()
-        if sp.returncode != 0:
-            print("Failed to set password")
+        password_cmd = """echo root:{password} | chpasswd""".format(password=properties['guestinfo.password'])
+        subprocess.Popen(password_cmd, shell=True, stdout=subprocess.PIPE).stdout.read()
 
     if properties['guestinfo.sshkey']:
         sshkey_cmd = """echo '{sshkey}' >> /root/.ssh/authorized_keys""".format(sshkey=properties['guestinfo.sshkey'])
