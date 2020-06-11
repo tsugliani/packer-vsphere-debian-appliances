@@ -8,7 +8,7 @@ Published builds from repository:
 Available OVF Properties for configuring the template:
 ```
 tsugliani at zMacBook in ~
-❯ govc import.spec debian-minimal-10.3.0.ova | jq                                                                                                                                                                                          (25s 834ms) 15:36:32
+❯ govc import.spec debian-minimal-10.3.0.ova | jq
 {
   "DiskProvisioning": "flat",
   "IPAllocationPolicy": "dhcpPolicy",
@@ -59,7 +59,5 @@ tsugliani at zMacBook in ~
   "WaitForIP": false,
   "Name": null
 }
-tsugliani at zMacBook in ~
-❯
 ```
 
