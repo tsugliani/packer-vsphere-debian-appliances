@@ -1,12 +1,22 @@
 # packer-vsphere-debian-appliances
+
 My VMware vSphere Debian Appliances
 
 Published builds from repository:
-- https://cloud.tsugliani.fr/ova/debian-minimal-10.3.0.ova
-- https://cloud.tsugliani.fr/ova/debian-toolbox-10.3.0.ova
 
-Available OVF Properties for configuring the template:
-```
+Minimal:
+
+- https://cloud.tsugliani.fr/ova/debian-minimal-10.3.0.ova
+- https://cloud.tsugliani.fr/ova/debian-minimal-10.4.0.ova
+
+Toolbox:
+
+- https://cloud.tsugliani.fr/ova/debian-toolbox-10.3.0.ova
+- https://cloud.tsugliani.fr/ova/debian-toolbox-10.4.0.ova
+
+Available OVF Properties for configuring the templates:
+
+```bash
 tsugliani at zMacBook in ~
 ❯ govc import.spec debian-minimal-10.3.0.ova | jq
 {
