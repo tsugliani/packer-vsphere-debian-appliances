@@ -42,7 +42,6 @@ cat << EOF > /etc/rc.local
 if [ ! -f /etc/debian.config ]; then
     /sbin/debian-init.py
     echo "\$(date)" > /etc/debian.config
-    systemctl restart getty@*
 fi
 
 exit 0

@@ -122,4 +122,3 @@ properties = appliance_get_ovf_properties()
 appliance_create_network_config(properties)
 appliance_create_hostfile_config(properties)
 appliance_update_credentials(properties)
-
