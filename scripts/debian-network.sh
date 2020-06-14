@@ -18,7 +18,6 @@ apt-get install -y \
   quagga \
   dnsmasq \
   mtr-tiny \
-  resolvconf \
   speedometer \
   bridge-utils
 

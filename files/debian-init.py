@@ -56,14 +56,12 @@ iface lo inet loopback
 
 # The primary network interface
 auto eth0
-allow-hotplug eth0
 iface eth0 inet static
     address {ipaddress}/{netprefix}
     gateway {gateway}
     dns-nameservers {dns}
 EOF
-ifdown eth0
-ifup eth0
+systemctl restart networking
     """.format(
             ipaddress=properties['guestinfo.ipaddress'],
             netprefix=properties['guestinfo.netprefix'],
@@ -76,7 +74,7 @@ ifup eth0
 
 def appliance_create_hostfile_config(properties):
     """
-    Create debian /etc/hosts file
+    Create debian /etc/hosts file for dnsmasq expand-hosts directive.
     """
 
     if properties['guestinfo.hostname'] and \
@@ -111,22 +109,6 @@ def appliance_update_credentials(properties):
         sshkey_cmd = """echo '{sshkey}' >> /root/.ssh/authorized_keys""".format(sshkey=properties['guestinfo.sshkey'])
         subprocess.Popen(sshkey_cmd, shell=True, stdout=subprocess.PIPE).stdout.read()
 
-
-def appliance_update_login_prompt():
-    """
-        Update Appliance login prompt & /etc/issue
-    """
-
-    # Set Login & SSH Banners
-    issue_cmd = """echo "Debian vSphere Appliance $(cat /etc/debian_version)" | tee /etc/issue /etc/issue.net > /dev/null"""
-
-    # restart all ttys to reflect updated values
-    tty_cmd = """nohup systemctl restart getty@*"""
-
-    subprocess.Popen(issue_cmd, shell=True, stdout=subprocess.PIPE).stdout.read()
-    subprocess.Popen(tty_cmd, shell=True, stdout=subprocess.PIPE).stdout.read()
-
-
 # Appliance configuration flow.
 # Fetch properties from OVF Environment
 # 1. Setup Appliance Networking
@@ -135,8 +117,9 @@ def appliance_update_login_prompt():
 # 4. Update banners & login ttys
 #
 
+
 properties = appliance_get_ovf_properties()
 appliance_create_network_config(properties)
 appliance_create_hostfile_config(properties)
 appliance_update_credentials(properties)
-appliance_update_login_prompt()
+
