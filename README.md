@@ -14,6 +14,10 @@ Toolbox:
 - https://cloud.tsugliani.fr/ova/debian-toolbox-10.3.0.ova
 - https://cloud.tsugliani.fr/ova/debian-toolbox-10.4.0.ova
 
+Build process:
+
+[![asciicast](https://asciinema.org/a/wj7n9czneZs80jg35x9DcoOt0.svg)](https://asciinema.org/a/wj7n9czneZs80jg35x9DcoOt0)
+
 Available OVF Properties for configuring the templates:
 
 ```bash
