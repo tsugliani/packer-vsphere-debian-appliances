@@ -23,6 +23,7 @@ echo '> Setup Appliance Banner for /etc/issue & /etc/issue.net'
 echo "=============================" | tee /etc/issue /etc/issue.net > /dev/null
 echo "Debian vSphere Appliance $(cat /etc/debian_version)" | tee -a /etc/issue /etc/issue.net > /dev/null
 echo "=============================" | tee -a /etc/issue /etc/issue.net > /dev/null
+sed -i 's/#Banner none/Banner \/etc\/issue.net/g' /etc/ssh/sshd_config
 
 echo '> Enable rc.local facility for debian-init.py'
 cat << EOF > /etc/rc.local
