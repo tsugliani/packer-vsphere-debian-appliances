@@ -8,11 +8,13 @@ Minimal:
 
 - https://cloud.tsugliani.fr/ova/debian-minimal-10.3.0.ova
 - https://cloud.tsugliani.fr/ova/debian-minimal-10.4.0.ova
+- https://cloud.tsugliani.fr/ova/debian-minimal-10.4.0.ova
 
 Toolbox:
 
 - https://cloud.tsugliani.fr/ova/debian-toolbox-10.3.0.ova
 - https://cloud.tsugliani.fr/ova/debian-toolbox-10.4.0.ova
+- https://cloud.tsugliani.fr/ova/debian-toolbox-10.5.0.ova
 
 Build process:
 
