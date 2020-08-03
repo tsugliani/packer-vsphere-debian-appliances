@@ -1,10 +1,6 @@
 {
   "builders": [
     {
-      "type": "vmware-iso",
-      "name": "{{ user `vm_name` }}",
-      "vm_name": "{{ user `vm_name` }}",
-      "vmdk_name": "{{ user `vm_name` }}-disk0",
       "boot_command": [
         "<esc><wait>",
         "install <wait>",
@@ -26,80 +22,86 @@
         "<enter><wait>"
       ],
       "boot_wait": "10s",
+      "disk_type_id": "zeroedthick",
+      "format": "ovf",
       "headless": false,
-      "vnc_disable_password": true,
-      "iso_url": "{{ user `iso_url` }}",
-      "iso_checksum": "{{ user `iso_checksum` }}",
-      "iso_checksum_type": "{{ user `iso_checksum_type` }}",
       "http_directory": "http",
-      "remote_type": "esx5",
-      "remote_host": "{{ user `builder_host` }}",
+      "iso_checksum": "{{ user `iso_checksum_type` }}:{{ user `iso_checksum` }}",
+      "iso_url": "{{ user `iso_url` }}",
+      "name": "{{ user `vm_name` }}",
       "remote_datastore": "{{ user `builder_host_datastore` }}",
-      "remote_username": "{{ user `builder_host_username` }}",
+      "remote_host": "{{ user `builder_host` }}",
       "remote_password": "{{ user `builder_host_password` }}",
-
-      "ssh_username": "{{ user `guest_username` }}",
+      "remote_type": "esx5",
+      "remote_username": "{{ user `builder_host_username` }}",
+      "shutdown_command": "/sbin/shutdown -Ph now",
+      "shutdown_timeout": "10s",
+      "skip_compaction": true,
       "ssh_password": "{{ user `guest_password` }}",
       "ssh_port": 22,
       "ssh_timeout": "60m",
-      "format": "ovf",
-      "shutdown_command": "/sbin/shutdown -Ph now",
-      "shutdown_timeout": "10s",
+      "ssh_username": "{{ user `guest_username` }}",
+      "type": "vmware-iso",
+      "vm_name": "{{ user `vm_name` }}",
+      "vmdk_name": "{{ user `vm_name` }}-disk0",
       "vmx_data": {
-        "numvcpus": "{{ user `numvcpus` }}",
-        "memsize": "{{ user `ramsize` }}",
-
+        "ethernet0.addressType": "generated",
         "ethernet0.networkName": "{{ user `builder_host_portgroup` }}",
         "ethernet0.present": "TRUE",
         "ethernet0.startConnected": "TRUE",
         "ethernet0.virtualDev": "vmxnet3",
-        "ethernet0.addressType": "generated",
-        "ethernet0.wakeOnPcktRcv": "FALSE"
-      }
+        "ethernet0.wakeOnPcktRcv": "FALSE",
+        "memsize": "{{ user `ramsize` }}",
+        "numvcpus": "{{ user `numvcpus` }}"
+      },
+      "vnc_disable_password": true
+    }
+  ],
+  "post-processors": [
+    {
+      "environment_vars": [
+        "APPLIANCE_NAME={{ user `vm_name` }}",
+        "APPLIANCE_VERSION={{ user `version` }}",
+        "APPLIANCE_OVA={{ user `vm_name` }}_{{user `version`}}"
+      ],
+      "inline": [
+        "cd postprocess-ova-properties",
+        "./add_ovf_properties.sh"
+      ],
+      "type": "shell-local"
     }
   ],
   "provisioners": [
     {
-      "type": "file",
+      "destination": "/root/.bash_profile",
       "source": "files/bash_profile.sh",
-      "destination": "/root/.bash_profile"
+      "type": "file"
     },
     {
-      "type": "file",
+      "destination": "/root/.bash_prompt",
       "source": "files/bash_prompt.sh",
-      "destination": "/root/.bash_prompt"
+      "type": "file"
     },
     {
-      "type": "file",
+      "destination": "/sbin/debian-init.py",
       "source": "files/debian-init.py",
-      "destination": "/sbin/debian-init.py"
+      "type": "file"
     },
     {
       "type": "shell",
+      "environment_vars": ["DEBIAN_FRONTEND=noninteractive"],
       "scripts": [
         "scripts/debian-update.sh",
         "scripts/debian-system.sh",
         "scripts/debian-storage.sh",
         "scripts/debian-network.sh",
         "scripts/debian-docker.sh",
+        "scripts/debian-hashicorp.sh",
         "scripts/debian-vmware.sh",
         "scripts/debian-settings.sh",
         "scripts/debian-cleanup.sh"
       ]
     }
-  ],
-  "post-processors": [
-    {
-      "type": "shell-local",
-      "environment_vars": [
-          "APPLIANCE_NAME={{ user `vm_name` }}",
-          "APPLIANCE_VERSION={{ user `version` }}",
-          "APPLIANCE_OVA={{ user `vm_name` }}_{{user `version`}}"
-      ],
-      "inline": [
-        "cd postprocess-ova-properties",
-        "./add_ovf_properties.sh"
-      ]
-    }
   ]
 }
+
