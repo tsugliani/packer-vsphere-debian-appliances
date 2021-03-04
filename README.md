@@ -11,6 +11,7 @@ Minimal:
 - https://cloud.tsugliani.fr/ova/debian-minimal-10.5.0.ova
 - https://cloud.tsugliani.fr/ova/debian-minimal-10.6.0.ova
 - https://cloud.tsugliani.fr/ova/debian-minimal-10.7.0.ova
+- https://cloud.tsugliani.fr/ova/debian-minimal-10.8.0.ova
 
 Toolbox:
 
@@ -19,6 +20,7 @@ Toolbox:
 - https://cloud.tsugliani.fr/ova/debian-toolbox-10.5.0.ova
 - https://cloud.tsugliani.fr/ova/debian-toolbox-10.6.0.ova
 - https://cloud.tsugliani.fr/ova/debian-toolbox-10.7.0.ova
+- https://cloud.tsugliani.fr/ova/debian-toolbox-10.8.0.ova
 
 Build process:
 
@@ -28,7 +30,7 @@ Available OVF Properties for configuring the templates:
 
 ```bash
 tsugliani at zMacBook in ~
-❯ govc import.spec debian-minimal-10.7.0.ova | jq
+❯ govc import.spec debian-minimal-10.8.0.ova | jq
 {
   "DiskProvisioning": "flat",
   "IPAllocationPolicy": "dhcpPolicy",
