@@ -12,13 +12,11 @@ Published builds from repository:
 
 Minimal:
 
-- https://cloud.tsugliani.fr/ova/debian-minimal-10.7.0.ova
 - https://cloud.tsugliani.fr/ova/debian-minimal-10.8.0.ova
 - https://cloud.tsugliani.fr/ova/debian-minimal-10.9.0.ova
 
 Toolbox:
 
-- https://cloud.tsugliani.fr/ova/debian-toolbox-10.7.0.ova
 - https://cloud.tsugliani.fr/ova/debian-toolbox-10.8.0.ova
 - https://cloud.tsugliani.fr/ova/debian-toolbox-10.9.0.ova
 
