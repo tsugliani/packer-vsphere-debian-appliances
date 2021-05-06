@@ -2,6 +2,12 @@
 
 My VMware vSphere Debian Appliances
 
+The appliances are built exclusively to be configured without leveraging VMware Guest Customization but relying entirely on OVF Properties.
+
+Deployment through HTML5 UI:
+
+![OVA Deploy through vCenter Server HTML5 UI](https://cloud.tsugliani.fr/img/debian-vsphere-ovf-properties.png)
+
 Published builds from repository:
 
 Minimal:
@@ -20,7 +26,9 @@ Build process:
 
 [![asciicast](https://asciinema.org/a/wj7n9czneZs80jg35x9DcoOt0.svg)](https://asciinema.org/a/wj7n9czneZs80jg35x9DcoOt0)
 
-Available OVF Properties for configuring the templates:
+You can also automate this template leveraging ovftool or govc for example:
+
+govc is more practical for this IMO as you can generate a JSON output from the OVA/OVF Properties & then process/leverage this as IaC.
 
 ```bash
 tsugliani at zMacBook in ~
