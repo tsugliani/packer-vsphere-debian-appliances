@@ -14,11 +14,13 @@ Minimal:
 
 - https://cloud.tsugliani.fr/ova/debian-minimal-10.8.0.ova
 - https://cloud.tsugliani.fr/ova/debian-minimal-10.9.0.ova
+- https://cloud.tsugliani.fr/ova/debian-minimal-10.10.0.ova
 
 Toolbox:
 
 - https://cloud.tsugliani.fr/ova/debian-toolbox-10.8.0.ova
 - https://cloud.tsugliani.fr/ova/debian-toolbox-10.9.0.ova
+- https://cloud.tsugliani.fr/ova/debian-toolbox-10.10.0.ova
 
 Build process:
 
@@ -30,7 +32,7 @@ govc is more practical for this IMO as you can generate a JSON output from the O
 
 ```bash
 tsugliani at zMacBook in ~
-❯ govc import.spec debian-minimal-10.9.0.ova | jq
+❯ govc import.spec debian-minimal-10.10.0.ova | jq
 {
   "DiskProvisioning": "flat",
   "IPAllocationPolicy": "dhcpPolicy",
