@@ -12,15 +12,11 @@ Published builds from repository:
 
 Minimal:
 
-- https://cloud.tsugliani.fr/ova/debian-minimal-10.8.0.ova
-- https://cloud.tsugliani.fr/ova/debian-minimal-10.9.0.ova
-- https://cloud.tsugliani.fr/ova/debian-minimal-10.10.0.ova
+- https://cloud.tsugliani.fr/ova/debian-minimal-11.1.0.ova
 
 Toolbox:
 
-- https://cloud.tsugliani.fr/ova/debian-toolbox-10.8.0.ova
-- https://cloud.tsugliani.fr/ova/debian-toolbox-10.9.0.ova
-- https://cloud.tsugliani.fr/ova/debian-toolbox-10.10.0.ova
+- https://cloud.tsugliani.fr/ova/debian-toolbox-11.1.0.ova
 
 Build process:
 
@@ -30,9 +26,11 @@ You can also automate this template leveraging ovftool or govc for example:
 
 govc is more practical for this IMO as you can generate a JSON output from the OVA/OVF Properties & then process/leverage this as IaC.
 
+Available OVF Properties for configuring the templates:
+
 ```bash
 tsugliani at zMacBook in ~
-❯ govc import.spec debian-minimal-10.10.0.ova | jq
+❯ govc import.spec debian-minimal-11.1.0.ova | jq
 {
   "DiskProvisioning": "flat",
   "IPAllocationPolicy": "dhcpPolicy",

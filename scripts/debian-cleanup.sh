@@ -21,6 +21,9 @@ sed -i -e 's|^USE_DPKG|#USE_DPKG|' /etc/locale.nopurge
 localepurge
 apt-get -y purge localepurge
 
+# cleanup installer resolv.conf
+echo ""  > /etc/resolv.conf
+
 # Cleanup log files
 echo '> Removing Log files...'
 cat /dev/null > /var/log/wtmp 2>/dev/null

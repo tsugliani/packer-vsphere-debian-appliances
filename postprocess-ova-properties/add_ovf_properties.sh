@@ -22,3 +22,6 @@ fi
 
 ovftool ${OUTPUT_PATH}/${APPLIANCE_NAME}.ovf ${OUTPUT_PATH}/${APPLIANCE_NAME}.ova
 rm -f appliance.xml
+rm -f ${OUTPUT_PATH}/${APPLIANCE_NAME}.ovf
+rm -f ${OUTPUT_PATH}/${APPLIANCE_NAME}-file1.nvram
+rm -f ${OUTPUT_PATH}/${APPLIANCE_NAME}-disk1.vmdk
