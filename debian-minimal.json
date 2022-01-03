@@ -29,6 +29,7 @@
       "iso_checksum": "{{ user `iso_checksum_type` }}:{{ user `iso_checksum` }}",
       "iso_url": "{{ user `iso_url` }}",
       "name": "{{ user `vm_name` }}",
+      "ovftool_options": "--noImageFiles",
       "remote_datastore": "{{ user `builder_host_datastore` }}",
       "remote_host": "{{ user `builder_host` }}",
       "remote_password": "{{ user `builder_host_password` }}",
