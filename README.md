@@ -2,35 +2,28 @@
 
 My VMware vSphere Debian Appliances
 
-The appliances are built exclusively to be configured without leveraging VMware Guest Customization but relying entirely on OVF Properties.
-
-Deployment through HTML5 UI:
-
-![OVA Deploy through vCenter Server HTML5 UI](https://cloud.tsugliani.fr/img/debian-vsphere-ovf-properties.png)
-
 Published builds from repository:
 
 Minimal:
 
-- https://cloud.tsugliani.fr/ova/debian-minimal-11.2.0.ova
+- https://cloud.tsugliani.fr/ova/debian-minimal-11.3.0.ova
+- https://cloud.tsugliani.fr/ova/debian-minimal-11.4.0.ova
+
 
 Toolbox:
 
-- https://cloud.tsugliani.fr/ova/debian-toolbox-11.2.0.ova
+- https://cloud.tsugliani.fr/ova/debian-toolbox-11.3.0.ova
+- https://cloud.tsugliani.fr/ova/debian-toolbox-11.4.0.ova
 
 Build process:
 
 [![asciicast](https://asciinema.org/a/wj7n9czneZs80jg35x9DcoOt0.svg)](https://asciinema.org/a/wj7n9czneZs80jg35x9DcoOt0)
 
-You can also automate this template leveraging ovftool or govc for example:
-
-govc is more practical for this IMO as you can generate a JSON output from the OVA/OVF Properties & then process/leverage this as IaC.
-
-Available OVF Properties for configuring the templates:
+Available OVF Properties for configuring the appliance:
 
 ```bash
-tsugliani at zMacBook in ~
-❯ govc import.spec debian-minimal-11.1.0.ova | jq
+tsugliani at zMaxBook in ~
+❯ govc import.spec debian-minimal-11.4.0.ova | jq
 {
   "DiskProvisioning": "flat",
   "IPAllocationPolicy": "dhcpPolicy",
