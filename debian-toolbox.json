@@ -43,6 +43,7 @@
       "ssh_timeout": "60m",
       "ssh_username": "{{ user `guest_username` }}",
       "type": "vmware-iso",
+      "version": 14,
       "vm_name": "{{ user `vm_name` }}",
       "vmdk_name": "{{ user `vm_name` }}-disk0",
       "vmx_data": {
