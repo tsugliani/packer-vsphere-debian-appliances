@@ -7,11 +7,13 @@ Published builds from repository:
 Minimal:
 
 - https://cloud.tsugliani.fr/ova/debian-minimal-11.4.0.ova
+- https://cloud.tsugliani.fr/ova/debian-minimal-11.5.0.ova
 
 
 Toolbox:
 
 - https://cloud.tsugliani.fr/ova/debian-toolbox-11.4.0.ova
+- https://cloud.tsugliani.fr/ova/debian-toolbox-11.5.0.ova
 
 Build process:
 
