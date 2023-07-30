@@ -6,14 +6,14 @@ Published builds from repository:
 
 Minimal:
 
-- https://cloud.tsugliani.fr/ova/debian-minimal-11.4.0.ova
-- https://cloud.tsugliani.fr/ova/debian-minimal-11.5.0.ova
+- https://cloud.tsugliani.fr/ova/debian-minimal-11.7.0.ova
+- https://cloud.tsugliani.fr/ova/debian-minimal-12.1.0.ova
 
 
 Toolbox:
 
-- https://cloud.tsugliani.fr/ova/debian-toolbox-11.4.0.ova
-- https://cloud.tsugliani.fr/ova/debian-toolbox-11.5.0.ova
+- https://cloud.tsugliani.fr/ova/debian-toolbox-11.7.0.ova
+- https://cloud.tsugliani.fr/ova/debian-toolbox-12.1.0.ova
 
 Build process:
 
@@ -23,7 +23,7 @@ Available OVF Properties for configuring the appliance:
 
 ```bash
 tsugliani at zMaxBook in ~
-❯ govc import.spec debian-minimal-11.4.0.ova | jq
+❯ govc import.spec debian-minimal-11.7.0.ova | jq
 {
   "DiskProvisioning": "flat",
   "IPAllocationPolicy": "dhcpPolicy",
