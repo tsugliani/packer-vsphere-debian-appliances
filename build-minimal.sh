@@ -1,9 +1,8 @@
 #!/bin/sh
 
-rm -rf output-debian-minimal-* 
+rm -rf output-debian-minimal-*
 
 packer build \
     --var-file="debian-builder.json" \
-    --var-file="debian-minimal-version-11.5.0.json" \
+    --var-file="debian-minimal-version-12.1.0.json" \
     debian-minimal.json
-    

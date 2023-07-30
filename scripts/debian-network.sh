@@ -15,7 +15,7 @@ apt-get install -y \
   wget \
   rsync \
   telnet \
-  netcat \
+  netcat-traditional \
   dnsmasq \
   mtr-tiny \
   speedometer \
