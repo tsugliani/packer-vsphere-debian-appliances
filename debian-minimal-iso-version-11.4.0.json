@@ -1,0 +1,18 @@
+{
+    "vcenter_server":"vCenter URL",
+    "username":"vCenter Username",
+    "password":"Password",
+    "datastore_iso":"Datastore",
+    "datastore_vm":"Datastore",
+    "cluster": "Cluster",
+    "folder": "Template Folder",
+    "network": "Network Segment",
+    "ssh_username": "root",
+    "ssh_password": "VMware1!",
+    "iso_name": "debian-11.4.0-amd64-netinst.iso",
+    "photon_ovf_template": "appliance.xml.template",
+    "version": "11.04",
+    "description": "Debian Server Template",
+    "vm_name": "Debian-Appliance-{{isotime \"0601\"}}",
+    "hostname": "Debian-Appliance-{{isotime \"0601\"}}"
+}

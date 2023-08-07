@@ -1,0 +1,134 @@
+{
+  "builders": [
+   {
+     "name":                      "debian-{{user `version`}}",
+     "type":                      "vsphere-iso",
+ 
+     "vcenter_server":            "{{user `vcenter_server`}}",
+     "username":                  "{{user `username`}}",
+     "password":                  "{{user `password`}}",
+     "insecure_connection":       true,
+     "http_directory":            "http/",
+ 
+     "vm_name":                   "{{user `vm_name`}}",
+     "vm_version":                15,
+     "guest_os_type":             "debian10_64Guest",
+     "firmware":                  "efi",
+    
+     "boot_order":                "disk,cdrom",
+     "create_snapshot":           false,
+     "convert_to_template":       false,
+     "boot_wait":                 "10s",
+ 
+     "cluster":                   "{{user `cluster`}}",
+     "CPUs":                      2,
+     "RAM":                       4096,
+ 
+     "datastore":                 "{{user `datastore_vm`}}",
+     "folder":                    "{{user `folder`}}",
+     "disk_controller_type":      "pvscsi",
+     "storage": [
+       {
+         "disk_size":             32768,
+         "disk_thin_provisioned": true
+       }
+     ],
+     "iso_paths":                 "[{{user `datastore_iso`}}]/Linux/Debian/{{user `iso_name`}}",
+     "remove_cdrom":              true,
+ 
+     "network_adapters": [
+       {
+         "network":               "{{user `network`}}",
+         "network_card":          "vmxnet3"
+       }
+     ],
+ 
+     "export": {
+         "force": true,
+         "output_directory": "{{user `output_directory`}}/{{user `vm_name`}}",
+         "image_files" : false,
+         "options" : ["nodevicesubtypes"]
+     },
+ 
+     "notes": "Base OS, VMware Tools, patched up to {{isotime \"20060102\"}}",
+ 
+     
+     "boot_command": [
+        "<wait3s>c<wait3s>",
+        "set background_color=black <wait>",
+        "<enter><wait>",
+        "linux /install.amd/vmlinuz <wait>",
+        "vga=788 <wait>",
+        "auto=true preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg <wait>", 
+        "ipv6.disable=1 language=en <wait>",
+        "debian-installer=en_US <wait>",
+        "biosdevname=0 <wait>",
+        "locale=en_US.UTF-8 <wait>",
+        "kbd-chooser/method=us <wait>",
+        "keyboard-configuration/xkb-keymap=us <wait>",
+        "netcfg/get_hostname={{ user `hostname` }} <wait>",
+        "netcfg/get_domain=lan.seanmassey.net <wait>",
+        "fb=false <wait>",
+        "debconf/frontend=noninteractive <wait>",
+        "console-setup/ask_detect=false <wait>",
+        "console-keymaps-at/keymap=us <wait>",
+        "<enter><wait>",
+        "initrd /install.amd/initrd.gz <enter><wait>",
+        "boot <enter>"
+      ],
+ 
+     "shutdown_command":          "/sbin/shutdown -h now",
+     "shutdown_timeout":          "1000s",
+     "communicator":              "ssh",
+     "ssh_username":              "{{user `ssh_username`}}",
+     "ssh_password":              "{{user `ssh_password`}}"
+   }
+   ],  
+   "provisioners": [
+     {
+       "type": "file",
+       "source": "files/bash_profile.sh",
+       "destination": "/root/.bash_profile"
+     },
+     {
+       "type": "file",
+       "source": "files/bash_prompt.sh",
+       "destination": "/root/.bash_prompt"
+     },
+     {
+       "type": "file",
+       "source": "files/debian-init.py",
+       "destination": "/sbin/debian-init.py"
+     },
+     {
+       "type": "shell",
+       "environment_vars": ["DEBIAN_FRONTEND=noninteractive"],
+       "scripts": [
+         "scripts/debian-update.sh",
+         "scripts/debian-system.sh",
+         "scripts/debian-vmware.sh",
+         "scripts/debian-settings.sh"
+       ]
+     },
+     {
+       "type": "shell",
+       "scripts": [
+         "scripts/debian-cleanup.sh"
+       ]
+     }
+   ],
+   "post-processors": [
+     {
+       "environment_vars": [
+         "APPLIANCE_NAME={{ user `vm_name` }}",
+         "APPLIANCE_VERSION={{ user `version` }}",
+         "APPLIANCE_OVA={{ user `vm_name` }}_{{user `version`}}"
+       ],
+       "inline": [
+         "./postprocess-ova-properties/add_ovf_properties.sh"
+       ],
+       "type": "shell-local"
+     }
+   ]
+ }
+ 
